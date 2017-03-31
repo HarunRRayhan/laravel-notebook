@@ -15,4 +15,13 @@ Route::get('/', function() {
 	return view('frontpage');
 });
 
-Route::get('/notebooks', 'NotebookController@index');
+Route::get('/notebooks', 'NotebookController@index')->name('notebooks.index');
+Route::post('/notebooks', 'NotebookController@store');
+Route::get('/notebooks/create', 'NotebookController@create');
+Route::get('/notebooks/{notebooks}', 'NotebookController@edit');
+Route::put('/notebooks/{notebooks}', 'NotebookController@update');
+Route::delete('/notebooks/{notebooks}', 'NotebookController@destroy');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
